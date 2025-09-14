@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enchanted Scents - Magical Perfumes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #fc0290;
+            --secondary-color: #39187b;
+            --accent-color: #c06c84;
+            --soft-pink: #df7b8c;
+            --lavender: #7373c7;
+            --mint: #98fb98;
+            --baby-blue: #6fb3c9;
+            --cream: #c0a491;
+            --light-color: #ffffff;
+            --text-color: #6c5b7b;
+            --glass-bg: rgba(255, 255, 255, 0.3);
+            --card-shadow: 0 8px 32px rgba(255, 192, 203, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f2cee3 0%, #b1cde8 50%, #c4f3c4 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background-color: transparent;
+           
+           
+            box-shadow: 0 2px 20px rgba(255, 192, 203, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+           
+            font-size: 40px;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 200;
+            position: relative;
+            transition: color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f9cbe6 0%, #cee3f8 50%, #c5f1c5 100%);
+            z-index: -2;
+        } */
+
+
+
+        /* Hero Section */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 2rem;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f9cbe6 0%, #cee3f8 50%, #c5f1c5 100%);
+    z-index: -2;
+}
+
+.hero-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    z-index: 1;
+}
+
+.hero-image img {
+    width: 400px;
+    max-width: 100%;
+    /* border-radius: 20px; */
+    /* box-shadow: 0 20px 40px rgba(0,0,0,0.2); */
+    animation: float 5s ease-in-out infinite;
+}
+
+.hero-content {
+    max-width: 500px;
+    animation: fadeIn 2s ease forwards;
+}
+
+
+
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--text-color);
+            padding: 0 20px;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(255, 192, 203, 0.3);
+            animation: slideDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            color: var(--text-color);
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, var(--soft-pink), var(--lavender));
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 192, 203, 0.3);
+            animation: slideUp 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 192, 203, 0.5);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 100px 20px;
+            background: linear-gradient(to bottom, #eefdff, #ffffff);
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--soft-pink), var(--lavender), transparent);
+        }
+
+        .products-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            /* background: linear-gradient(135deg, var(--cream), var(--light-color)); */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            border: 1px solid rgba(255, 192, 203, 0.3);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(255, 192, 203, 0.3);
+        }
+
+        .product-image {
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, var(--lavender), var(--mint));
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--soft-pink), var(--lavender));
+            color: white;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            box-shadow: 0 2px 10px rgba(255, 192, 203, 0.3);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-description {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--soft-pink), var(--lavender));
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .buy-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .buy-button:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(135deg, var(--lavender), var(--mint));
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 192, 203, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #c5eec5, #b1ceea);
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-text h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .about-image {
+            position: relative;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+
+        .about-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 192, 203, 0.3);
+        }
+
+        .magic-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(255, 192, 203, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 192, 203, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h4 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #e5afce, #ebccb6);
+            position: relative;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 192, 203, 0.2);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-form h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 192, 203, 0.3);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--text-color);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--soft-pink);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 0 3px rgba(255, 192, 203, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--soft-pink), var(--lavender));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, var(--lavender), var(--mint));
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 192, 203, 0.4);
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+
+        .contact-info.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .contact-info h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(255, 192, 203, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-right: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+
+        .contact-details p {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #eac3da 0%, #b7d2ec 50%, #c9f1c9 100%);
+            color: var(--text-color);
+            padding: 80px 20px 30px;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--soft-pink), var(--lavender));
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--soft-pink), var(--lavender));
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 192, 203, 0.3);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 192, 203, 0.5);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 192, 203, 0.3);
+            border-radius: 30px 0 0 30px;
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--text-color);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--soft-pink);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 0 3px rgba(255, 192, 203, 0.2);
+        }
+
+        .newsletter-button {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, var(--soft-pink), var(--lavender));
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-button:hover {
+            background: linear-gradient(135deg, var(--lavender), var(--mint));
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 192, 203, 0.3);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            50% {
+                transform: translateY(-10px) translateX(-10px);
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px);
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Responsive Design */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+
+            .products-container,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .magic-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            .newsletter-form,
+            .contact-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input,
+            .newsletter-button {
+                width: 100%;
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">Enchanted Scents</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="particles-container" id="particles"></div>
+        <div class="hero-content">
+            <h1>Discover Magical Fragrances</h1>
+            <p>Step into a world of enchantment with our collection of whimsical perfumes crafted to transport you to a realm of dreams and wonder.</p>
+            <a href="#products" class="cta-button">Explore Collection</a>
+        </div>
+    </section> -->
+
+
+    <section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="particles-container" id="particles"></div>
+    <div class="hero-content-wrapper">
+        <div class="hero-image">
+            <img src="image/Adobe Express - file.png" alt="Luxury Perfume">
+        </div>
+        <div class="hero-content">
+            <h1>Discover Magical Fragrances</h1>
+            <p>Step into a world of enchantment with our collection of whimsical perfumes crafted to transport you to a realm of dreams and wonder.</p>
+            <a href="#products" class="cta-button">Explore Collection</a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <h2 class="section-title">Enchanted Fragrances</h2>
+        <div class="products-container">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="image/per8.jpg" alt="Fairy Dust">
+                    <span class="product-badge">Bestseller</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Fairy Dust</h3>
+                    <p class="product-description">A magical blend of cotton candy, vanilla, and sparkling citrus that captures the essence of fairy magic.</p>
+                    <p class="product-price">$95</p>
+                    <a href="#" class="buy-button">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="image/per1.jpg" alt="Castle Garden">
+                    <span class="product-badge">New</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Castle Garden</h3>
+                    <p class="product-description">Fresh roses, peonies, and dew-kissed petals create a fragrance worthy of a princess's garden.</p>
+                    <p class="product-price">$110</p>
+                    <a href="#" class="buy-button">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="image/per9.jpg" alt="Moonbeam Kiss">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Moonbeam Kiss</h3>
+                    <p class="product-description">Luminous notes of moonflower, white musk, and stardust that shimmer like moonlight on water.</p>
+                    <p class="product-price">$105</p>
+                    <a href="#" class="buy-button">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="image/per3.jpg" alt="Unicorn Dreams">
+                    <span class="product-badge">Limited</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Unicorn Dreams</h3>
+                    <p class="product-description">A whimsical fusion of rainbow berries, cotton candy, and magical sparkles for the dreamer in you.</p>
+                    <p class="product-price">$125</p>
+                    <a href="#" class="buy-button">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="image/per18.jpg" alt="Enchanted Forest">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Enchanted Forest</h3>
+                    <p class="product-description">Mossy ferns, wild berries, and ancient trees create a mystical fragrance from a magical woodland.</p>
+                    <p class="product-price">$115</p>
+                    <a href="#" class="buy-button">Buy Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="image/per7.jpg" alt="Rainbow Promise">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">Rainbow Promise</h3>
+                    <p class="product-description">A vibrant burst of citrus, florals, and sweet notes that capture the joy of a rainbow's promise.</p>
+                    <p class="product-price">$100</p>
+                    <a href="#" class="buy-button">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">Our Magical Story</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Where Dreams Become Fragrances</h3>
+                <p>In a realm where magic meets reality, Enchanted Scents was born from a simple wish: to bottle the essence of dreams and wonder. Our journey began in a hidden garden where flowers bloom in impossible colors and the air shimmers with possibility.</p>
+                <p>Each fragrance in our collection is crafted with love and a sprinkle of fairy dust, using only the finest ethically-sourced ingredients from enchanted forests and mystical meadows. Our master perfumers work under moonlight, blending notes that transport you to worlds of imagination.</p>
+                <p>We believe that everyone deserves to feel magical, and our perfumes are the key to unlocking your inner enchantment. Whether you're seeking the delicate whisper of fairy wings or the bold magic of a unicorn's horn, we have a scent that will make your heart soar.</p>
+            </div>
+            <div class="about-image">
+                <img src="image/Adobe Express - file.png" alt="Enchanted Garden">
+            </div>
+        </div>
+        <div class="magic-features">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-magic"></i></div>
+                <h4>Magic Ingredients</h4>
+                <p>Sourced from mystical gardens and enchanted forests around the world</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <h4>Crafted with Love</h4>
+                <p>Each bottle is handcrafted with care and a touch of fairy magic</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-star"></i></div>
+                <h4>Enchanted Experience</h4>
+                <p>Transform your everyday moments into magical memories</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-content">
+            <div class="contact-form">
+                <h3>Send a Magical Message</h3>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Magic</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>Visit Our Enchanted Boutique</h3>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-details">
+                        <h4>Magical Location</h4>
+                        <p>123 Fairy Tale Lane<br>Enchanted Forest, EF 12345</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-details">
+                        <h4>Call Us</h4>
+                        <p>(555) 123-MAGIC<br>Monday - Saturday: 10AM - 7PM</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-details">
+                        <h4>Email Us</h4>
+                        <p>magic@enchantedscents.com<br>We reply with fairy speed!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Enchanted Scents</h3>
+                <p>We create magical fragrances that transport you to a world of dreams and wonder. Each scent is crafted with love and a touch of fairy dust.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Magical Links</h3>
+                <p><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">Our Story</a></p>
+                <p><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">Collections</a></p>
+                <p><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">Gift Sets</a></p>
+                <p><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">Store Locator</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Fairy Support</h3>
+                <p><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">Contact Us</a></p>
+                <p><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">Shipping & Returns</a></p>
+                <p><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">FAQ</a></p>
+                <p><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">Privacy Policy</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Magic Newsletter</h3>
+                <p>Subscribe to receive updates on new magical fragrances, exclusive offers, and enchanting stories.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2023 Enchanted Scents. All rights reserved. | Crafted with magic and fairy dust</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active navigation link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').substring(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 0';
+                header.style.background = 'rgba(255, 255, 255, 0.9)';
+            } else {
+                header.style.padding = '';
+                header.style.background = 'rgba(255, 255, 255, 0.7)';
+            }
+        });
+
+        // Particles and sparkles animation
+        const particlesContainer = document.getElementById('particles');
+        const particlesCount = 30;
+        const sparklesCount = 20;
+        
+        // Create floating particles
+        for (let i = 0; i < particlesCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random pastel colors
+            const colors = ['rgba(255, 192, 203, 0.3)', 'rgba(230, 230, 250, 0.3)', 'rgba(152, 251, 152, 0.3)', 'rgba(173, 216, 230, 0.3)'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.backgroundColor = color;
+            
+            // Random size between 10px and 30px
+            const size = Math.random() * 20 + 10;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random position
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            // Random animation duration
+            const duration = Math.random() * 20 + 10;
+            particle.style.animation = `float ${duration}s infinite ease-in-out`;
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            
+            particlesContainer.appendChild(particle);
+        }
+
+        // Create sparkles
+        for (let i = 0; i < sparklesCount; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            
+            // Random position
+            sparkle.style.left = `${Math.random() * 100}%`;
+            sparkle.style.top = `${Math.random() * 100}%`;
+            
+            // Random animation duration
+            const duration = Math.random() * 3 + 2;
+            sparkle.style.animation = `twinkle ${duration}s infinite ease-in-out`;
+            sparkle.style.animationDelay = `${Math.random() * 3}s`;
+            
+            particlesContainer.appendChild(sparkle);
+        }
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-title, .product-card, .about-text, .about-image, .feature-card, .contact-form, .contact-info').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            
+            // Create success message
+            const successMessage = document.createElement('div');
+            successMessage.textContent = 'Thank you for subscribing to our magic!';
+            successMessage.style.position = 'fixed';
+            successMessage.style.bottom = '20px';
+            successMessage.style.right = '20px';
+            successMessage.style.background = 'linear-gradient(135deg, var(--soft-pink), var(--lavender))';
+            successMessage.style.color = 'white';
+            successMessage.style.padding = '15px 25px';
+            successMessage.style.borderRadius = '30px';
+            successMessage.style.boxShadow = '0 4px 12px rgba(255, 192, 203, 0.3)';
+            successMessage.style.zIndex = '1000';
+            successMessage.style.animation = 'slideUp 0.5s ease-out';
+            
+            document.body.appendChild(successMessage);
+            
+            // Reset form
+            e.target.reset();
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                successMessage.style.animation = 'slideDown 0.5s ease-out';
+                setTimeout(() => {
+                    document.body.removeChild(successMessage);
+                }, 500);
+            }, 3000);
+        });
+
+        // Contact form
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Create success message
+            const successMessage = document.createElement('div');
+            successMessage.textContent = 'Your magical message has been sent! We\'ll reply with fairy speed!';
+            successMessage.style.position = 'fixed';
+            successMessage.style.bottom = '20px';
+            successMessage.style.right = '20px';
+            successMessage.style.background = 'linear-gradient(135deg, var(--soft-pink), var(--lavender))';
+            successMessage.style.color = 'white';
+            successMessage.style.padding = '15px 25px';
+            successMessage.style.borderRadius = '30px';
+            successMessage.style.boxShadow = '0 4px 12px rgba(255, 192, 203, 0.3)';
+            successMessage.style.zIndex = '1000';
+            successMessage.style.animation = 'slideUp 0.5s ease-out';
+            
+            document.body.appendChild(successMessage);
+            
+            // Reset form
+            e.target.reset();
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                successMessage.style.animation = 'slideDown 0.5s ease-out';
+                setTimeout(() => {
+                    document.body.removeChild(successMessage);
+                }, 500);
+            }, 3000);
+        });
+
+        // Add hover effect to footer links
+        document.querySelectorAll('.footer-section a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.opacity = '1';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.opacity = '0.8';
+            });
+        });
+    </script>
+</body>
+</html>
